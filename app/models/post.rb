@@ -17,6 +17,10 @@ class Post < ActiveRecord::Base
     where(author: author_id)
   end
 
+  def author_name
+    self.try(:author).try(:name)
+  end
+
   private
 
   def is_title_case
@@ -28,4 +32,6 @@ class Post < ActiveRecord::Base
   def make_title_case
     self.title = self.title.titlecase
   end
+
+
 end
